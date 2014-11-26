@@ -1,0 +1,5 @@
+<button {{bind-attr class=":btn :btn-default disabled:disabled"}} {{action 'selectPdf'}}>
+	{{buttonText}}
+</button>
+
+{{view 'pdf_upload' class="hidden" id='pdf-upload-file-select'}}

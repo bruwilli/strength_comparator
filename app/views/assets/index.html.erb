@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Strength Diff</title>
+  <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css", media: "all" %>
+  <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap-theme.min.css", media: "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+  <%= javascript_tag do %>
+    window.orderedStrengths = <%= Person::StrengthList.to_json.html_safe %>;
+    window.authenticityToken = "<%= form_authenticity_token %>";
+   <% end %>
+
+</head>
+<body>
+  <%= javascript_include_tag "vendor/pdf" %>
+  <%= javascript_tag do %>
+    //PDFJS.workerSrc = '<%= javascript_path "vendor/pdf" %>';
+    PDFJS.disableWorker = true;
+   <% end %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" %>
+</body>
+</html>

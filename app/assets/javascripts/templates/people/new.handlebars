@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="pull-left">{{select-pdf-button selectedPdf=selectedPdf disabled=processingPdf}}</div>
+		<button {{bind-attr class=":btn :btn-primary isValid::disabled :pull-left"}} {{action 'submit'}}>Submit</button>
+	</div>
+	<div class="row">
+		{{#if errorMessage}}
+		  <div class="alert alert-danger" role="alert">
+		  	{{errorMessage}}
+		  </div>
+		{{/if}}
+		{{#if isValid}}
+		<h2><small>Name: </small>{{firstName}} {{lastName}}</h2>
+		<h2><small>Strengths in Order:</small></h2>
+		<ol>
+			{{#each index in strengthIndices}}
+			  <li>{{strength index}}</li>
+			{{/each}}
+		</ol>
+		{{/if}}
+	</div>
+</div>
