@@ -115,6 +115,7 @@ App.PeopleNewController = Ember.Controller.extend({
   },
   actions: {
     submit: function() {
+      var self = this;
       var person = this.store.createRecord('person', {
         firstName: this.get('firstName'),
         lastName: this.get('lastName'),
@@ -122,7 +123,8 @@ App.PeopleNewController = Ember.Controller.extend({
       });
 
       person.save().then(function() {
-        alert("Save worked");
+        self.store.unloadRecord(person);
+        self.transitionTo('people');
       }, function(error) {
         alert("Save didn't work!");
       });

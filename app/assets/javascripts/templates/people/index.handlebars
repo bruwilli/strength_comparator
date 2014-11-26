@@ -1,0 +1,22 @@
+<div>{{#link-to 'people.new'}}Add Person{{/link-to}}</div>
+
+<table class='table table-bordered table-hover table-condensed table-responsive'>
+	<thead>
+		<tr>
+		  <th></th>
+		  {{#each person in model}}
+		    <th>{{person.firstName}} {{person.lastName}}</th>
+		  {{/each}}
+		</tr>
+	</thead>
+  <tbody>
+		{{#each person in model}}
+		  <tr>
+			  <td>{{person.firstName}} {{person.lastName}}</td>
+			  {{#each comparedPerson in model}}
+			    <td>{{strengthDiffs person comparedPerson=comparedPerson}}</td>
+			  {{/each}}
+			</tr>
+		{{/each}}
+	</tbody>
+</table>

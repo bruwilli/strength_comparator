@@ -3,7 +3,8 @@ App.PeopleNewRoute = Ember.Route.extend({
 		controller.setProperties({
 			firstName: '',
 			lastName: '',
-			strengthIndices: []
+			strengthIndices: [],
+			selectedPdf: null
 		});
 	}
 });
