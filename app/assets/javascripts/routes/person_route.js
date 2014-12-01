@@ -10,4 +10,9 @@ App.PersonRoute = Ember.Route.extend({
 		})
 		this._super(controller, model);
 	},
+	actions: {
+    willTransition: function(transition) {
+      this.controller.set('others', []);
+    }
+  }
 });
