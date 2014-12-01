@@ -22,7 +22,7 @@
 					<tr>
 					  <th>{{model.firstName}}'s Strengths</th>
 					  {{#each person in others}}
-					    <th>{{person.firstName}} {{person.lastName}}</th>
+					    <th>{{#link-to 'person' person}}{{person.firstName}} {{person.lastName}}{{/link-to}}</th>
 					  {{/each}}
 					</tr>
 				</thead>

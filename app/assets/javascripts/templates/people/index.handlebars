@@ -26,7 +26,7 @@
 		  <tbody>
 				{{#each person in model}}
 				  <tr>
-					  <td>{{person.firstName}} {{person.lastName}}</td>
+					  <td>{{#link-to 'person' person}}{{person.firstName}} {{person.lastName}}{{/link-to}}</td>
 					  {{#each comparedPerson in model}}
 					  	{{strength-diff-cell person=person comparedPerson=comparedPerson maxDiff=578}}
 					  {{/each}}
