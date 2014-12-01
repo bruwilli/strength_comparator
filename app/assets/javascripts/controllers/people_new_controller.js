@@ -86,14 +86,16 @@ App.PeopleNewController = Ember.Controller.extend({
             }
 
             var strengthIndices = [];
+            var orderedStrengthIndices = [];
             var i = 0;
             for (; i < strengths.length; i++) {
-              var strength = strengths[i];
-              var index = window.orderedStrengths.indexOf(strength);
+              var strength = window.orderedStrengths[i];
+              var index = strengths.indexOf(strength);
               if (index == -1) {
                 break;
               } else {
                 strengthIndices.push(index);
+                orderedStrengthIndices[index] = i;
               }
             }
 
@@ -101,7 +103,8 @@ App.PeopleNewController = Ember.Controller.extend({
               self.setProperties({
                 firstName: firstName,
                 lastName: lastName,
-                strengthIndices: strengthIndices
+                strengthIndices: strengthIndices,
+                orderedStrengthIndices: orderedStrengthIndices
               })
               self.set('processingPdf', false);
             } else {

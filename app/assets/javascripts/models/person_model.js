@@ -22,5 +22,17 @@ App.PersonModel = DS.Model.extend({
       sum += Math.abs(diff);
   	}
   	return { other: other, indexDiffs: diffs, diffness: sum };
-  }
+  },
+
+  strengthIndicesObserver: function() {
+    var strengthIndices = this.get('strengthIndices');
+    var orderedStrengthIndices = [];
+    if (Ember.isArray(strengthIndices)) {
+      for (var i = 0; i < strengthIndices.length; i++) {
+        orderedStrengthIndices[strengthIndices[i]] = i;
+      }
+    }
+    this.set('orderedStrengthIndices', orderedStrengthIndices);
+  }.observes('strengthIndices').on('init')
+
 });

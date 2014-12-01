@@ -5,7 +5,7 @@
 		<tr>
 		  <th></th>
 		  {{#each person in model}}
-		    <th>{{person.firstName}} {{person.lastName}}</th>
+		    <th>{{#link-to 'person' person}}{{person.firstName}} {{person.lastName}}{{/link-to}}</th>
 		  {{/each}}
 		</tr>
 	</thead>
@@ -14,7 +14,9 @@
 		  <tr>
 			  <td>{{person.firstName}} {{person.lastName}}</td>
 			  {{#each comparedPerson in model}}
-			    <td>{{strengthDiffs person comparedPerson=comparedPerson}}</td>
+			  	{{strength-diff-cell person=person comparedPerson=comparedPerson maxDiff=512}}
+
+			    
 			  {{/each}}
 			</tr>
 		{{/each}}

@@ -1,0 +1,24 @@
+<div>{{#link-to 'people'}}Back to full matrix{{/link-to}}</div>
+
+<h2><small>Name: </small>{{model.firstName}} {{model.lastName}}</h2>
+
+<table class='table table-bordered table-hover table-condensed table-responsive'>
+	<thead>
+		<tr>
+		  <th>{{model.firstName}}'s Strengths</th>
+		  {{#each person in others}}
+		    <th>{{person.firstName}} {{person.lastName}}</th>
+		  {{/each}}
+		</tr>
+	</thead>
+  <tbody>
+		{{#each comparedStrength in comparedStrengths}}
+		  <tr>
+			  <td>{{comparedStrength.strength}}</td>
+			  {{#each strengthDiff in comparedStrength.strengthDiffs}}
+			    {{strength-diff-cell strengthDiff=strengthDiff maxDiff=33}}
+			  {{/each}}
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
