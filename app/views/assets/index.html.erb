@@ -15,8 +15,7 @@
 <body>
   <%= javascript_include_tag "vendor/pdf" %>
   <%= javascript_tag do %>
-    //PDFJS.workerSrc = '<%= javascript_path "vendor/pdf" %>';
-    PDFJS.disableWorker = true;
+    PDFJS.workerSrc = '<%= javascript_path "vendor/pdf" %>';
    <% end %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" %>

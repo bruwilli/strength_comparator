@@ -1,24 +1,38 @@
-<div>{{#link-to 'people.new'}}Add Person{{/link-to}}</div>
+<div class="container">
+	<div class="row">
+    <div class="col-md-12">{{#link-to 'people.new'}}Add Person{{/link-to}}</div>
+  </div>
+	<div class="row">
+    <div class="col-md-12">
+    	<div class="diff-spectrum">
+    		<div class="diff-gradient">
+    			<div class="pull-left diff-description">Same (0)</div>
+    			<div class="pull-right diff-description">Different (578)</div>
+    		</div>
+    	</div>
+    </div>
+  </row>
 
-<table class='table table-bordered table-hover table-condensed table-responsive'>
-	<thead>
-		<tr>
-		  <th></th>
-		  {{#each person in model}}
-		    <th>{{#link-to 'person' person}}{{person.firstName}} {{person.lastName}}{{/link-to}}</th>
-		  {{/each}}
-		</tr>
-	</thead>
-  <tbody>
-		{{#each person in model}}
-		  <tr>
-			  <td>{{person.firstName}} {{person.lastName}}</td>
-			  {{#each comparedPerson in model}}
-			  	{{strength-diff-cell person=person comparedPerson=comparedPerson maxDiff=512}}
-
-			    
-			  {{/each}}
-			</tr>
-		{{/each}}
-	</tbody>
-</table>
+  <div class="row">
+		<table class='table table-bordered table-hover table-condensed table-responsive'>
+			<thead>
+				<tr>
+				  <th></th>
+				  {{#each person in model}}
+				    <th>{{#link-to 'person' person}}{{person.firstName}} {{person.lastName}}{{/link-to}}</th>
+				  {{/each}}
+				</tr>
+			</thead>
+		  <tbody>
+				{{#each person in model}}
+				  <tr>
+					  <td>{{person.firstName}} {{person.lastName}}</td>
+					  {{#each comparedPerson in model}}
+					  	{{strength-diff-cell person=person comparedPerson=comparedPerson maxDiff=578}}
+					  {{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>

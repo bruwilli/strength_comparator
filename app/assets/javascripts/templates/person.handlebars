@@ -1,24 +1,42 @@
-<div>{{#link-to 'people'}}Back to full matrix{{/link-to}}</div>
+<div class="person-detail">
+	<div>{{#link-to 'people'}}Back to full matrix{{/link-to}}</div>
+	<div class="container">
+		<div class="row">
+	    <div class="col-md-12"><h2><small>Name: </small>{{model.firstName}} {{model.lastName}}</h2></div>
+	  </div>
 
-<h2><small>Name: </small>{{model.firstName}} {{model.lastName}}</h2>
+	  <div class="row">
+	    <div class="col-md-12">
+	    	<div class="diff-spectrum">
+	    		<div class="diff-gradient">
+	    			<div class="pull-left diff-description">Same (0)</div>
+	    			<div class="pull-right diff-description">Different (&plusmn;33)</div>
+	    		</div>
+	    	</div>
+	    </div>
+	  </div>
 
-<table class='table table-bordered table-hover table-condensed table-responsive'>
-	<thead>
-		<tr>
-		  <th>{{model.firstName}}'s Strengths</th>
-		  {{#each person in others}}
-		    <th>{{person.firstName}} {{person.lastName}}</th>
-		  {{/each}}
-		</tr>
-	</thead>
-  <tbody>
-		{{#each comparedStrength in comparedStrengths}}
-		  <tr>
-			  <td>{{comparedStrength.strength}}</td>
-			  {{#each strengthDiff in comparedStrength.strengthDiffs}}
-			    {{strength-diff-cell strengthDiff=strengthDiff maxDiff=33}}
-			  {{/each}}
-			</tr>
-		{{/each}}
-	</tbody>
-</table>
+	  <div class="row">
+			<table class='table table-bordered table-hover table-condensed table-responsive'>
+				<thead>
+					<tr>
+					  <th>{{model.firstName}}'s Strengths</th>
+					  {{#each person in others}}
+					    <th>{{person.firstName}} {{person.lastName}}</th>
+					  {{/each}}
+					</tr>
+				</thead>
+			  <tbody>
+					{{#each comparedStrength in comparedStrengths}}
+					  <tr>
+						  <td>{{comparedStrength.strength}}</td>
+						  {{#each strengthDiff in comparedStrength.strengthDiffs}}
+						    {{strength-diff-cell strengthDiff=strengthDiff maxDiff=33}}
+						  {{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

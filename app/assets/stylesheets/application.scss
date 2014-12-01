@@ -1,0 +1,18 @@
+@import "mixins";
+@import "components/*";
+@import "person_detail";
+
+
+.diff-spectrum {
+	width: 100%;
+	.diff-gradient {
+		.diff-description {
+			padding: 5px 10px;
+		}
+		width: 100%;
+    @include linear-gradient($same-color, $diff-color);
+    display: inline-block;
+    color: $diff-font-color;
+	}
+}
+
