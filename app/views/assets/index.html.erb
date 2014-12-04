@@ -14,6 +14,7 @@
 </head>
 <body>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "vendor/pdf" %>
   <%= javascript_tag do %>
     PDFJS.workerSrc = '<%= javascript_path "vendor/pdf" %>';
    <% end %>
