@@ -1,10 +1,11 @@
 App.PeopleNewRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
-		controller.setProperties({
-			firstName: '',
-			lastName: '',
-			strengthIndices: [],
-			selectedPdf: null
-		});
+		this._super(controller, model);
+		controller.initPerson();
+	},
+	actions: {
+  	willTransition: function() {
+      this.get('controller').cleanup();
+  	}
 	}
 });

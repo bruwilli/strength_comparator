@@ -1,6 +1,10 @@
+//= require jquery-ui/sortable
+
+
 @import "mixins";
 @import "components/*";
 @import "person_detail";
+@import "person_new";
 
 
 .diff-spectrum {

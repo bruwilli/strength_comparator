@@ -1,22 +1,56 @@
+<div>{{#link-to 'people'}}Back to full matrix{{/link-to}}</div>
 <div class="container">
 	<div class="row">
-		<div class="pull-left">{{select-pdf-button selectedPdf=selectedPdf disabled=processingPdf}}</div>
-		<button {{bind-attr class=":btn :btn-primary isValid::disabled :pull-left"}} {{action 'submit'}}>Submit</button>
+		<button {{bind-attr class=":btn :btn-primary readyToSubmit::disabled :pull-right"}} {{action 'submit'}} id="submit-person-button">Submit Strengths for This Person</button>
 	</div>
+
 	<div class="row">
-		{{#if errorMessage}}
-		  <div class="alert alert-danger" role="alert">
-		  	{{errorMessage}}
+
+		<div class="panel panel-default">
+		  <div class="panel-body">
+				<div class="select-pdf-button">
+					{{select-pdf-button selectedPdf=selectedPdf disabled=processingPdf}}
+				</div>
+				{{#if errorMessage}}
+				  <div class="alert alert-danger" role="alert">
+				  	{{errorMessage}}
+				  </div>
+				{{/if}}
+				<div class="panel panel-default">
+          <div class="panel-heading">You can manually set strengths and names below. <strong><mark>Only do this if you don't have your Gallup "Theme Sequence Report" PDF file!</mark></strong></div>
+				  <div class="panel-body">
+				  	<div class="row">
+				  		<div class="col-xs-6">
+						  	<div class="form-group">
+							    <label for="first-name-input">First Name</label>
+							    {{input value=person.firstName class="form-control" id="first-name-input"}}
+		  					</div>
+		  				</div>
+				  		<div class="col-xs-6">
+						  	<div class="form-group">
+							    <label for="last-name-input">Last Name</label>
+							    {{input value=person.lastName class="form-control" id="last-name-input"}}
+		  					</div>
+		  				</div>
+		  			</div>
+				  	<div class="row">
+				  		<div class="col-cs-12 text-center">Click to move to bottom of opposite column, or drag to move or change order.</div>
+				  		<div class="col-xs-6 left-sortable">
+				  			<div class="text-center"><label>Your Ordered Strengths</label></div>
+				        <ul id="ordered-strengths" class="connectedSortable list-group">
+								</ul>
+							</div>
+				  		<div class="col-xs-6 right-sortable">
+				  			<div class="text-center"><label>Strenghts to choose from</label></div>
+								<ul id="initial-strengths" class="connectedSortable list-group">
+									{{#each strength in initialStrengths}}
+									  <li class="ui-state-highlight">{{strength}}</li>
+								  {{/each}}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 		  </div>
-		{{/if}}
-		{{#if isValid}}
-		<h2><small>Name: </small>{{firstName}} {{lastName}}</h2>
-		<h2><small>Strengths in Order:</small></h2>
-		<ol>
-			{{#each index in orderedStrengthIndices}}
-			  <li>{{strength index}}</li>
-			{{/each}}
-		</ol>
-		{{/if}}
+		</div>
 	</div>
-</div>

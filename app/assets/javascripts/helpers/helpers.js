@@ -1,4 +1,4 @@
-Ember.Handlebars.helper('strength', function(value, options) {
+Ember.Handlebars.helper('strengthName', function(value, options) {
   return window.orderedStrengths[value];
 });
 

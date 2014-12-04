@@ -4,10 +4,15 @@ App.PersonModel = DS.Model.extend({
   firstName: attr(),
   lastName: attr(),
   strengthIndices: attr(),
-	
-  fullName: function() {
-    return this.get('firstName') + ' ' + this.get('lastName');
-  }.property('firstName', 'lastName'),
+  isDataValid: function() {
+    var firstName = this.get('firstName');
+    var lastName = this.get('lastName');
+    var strengthIndices = this.get('strengthIndices');
+    return !Ember.isBlank(firstName) &&
+           !Ember.isBlank(lastName) &&
+           Ember.isArray(strengthIndices) && 
+           strengthIndices.length === window.orderedStrengths.length;
+  }.property('firstName', 'lastName', 'strengthIndices'),
 
   comparedToOther: function(other) {
   	myIndices = this.get('strengthIndices');

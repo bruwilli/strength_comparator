@@ -2,9 +2,9 @@ App.SelectPdfButtonComponent = Ember.Component.extend({
   selectedPdf: undefined,
   buttonText: function() {
     if (this.get('selectedPdf')) {
-      return 'Change Gallup "Theme Sequence Report"';
+      return 'Use New Gallup "Theme Sequence Report"';
     } else {
-      return 'Select Gallup "Theme Sequence Report"';
+      return 'Add Using Gallup "Theme Sequence Report"';
     }
   }.property('selectedPdf'),
 

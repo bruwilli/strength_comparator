@@ -1,9 +1,11 @@
 #= require jquery
+#= require jquery-ui/sortable
 #= require handlebars
 #= require ember
 #= require ember-data
 #= require_self
 #= require app
+
 window.URL = window.URL || window.webkitURL;
 window.App = Ember.Application.create({
   LOG_ACTIVE_GENERATION: true,

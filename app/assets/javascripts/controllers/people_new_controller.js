@@ -1,14 +1,10 @@
 App.PeopleNewController = Ember.Controller.extend({
-  isValid: function() {
-    var firstName = this.get('firstName');
-    var lastName = this.get('lastName');
-    var strengthIndices = this.get('strengthIndices');
+  initialStrengths: window.orderedStrengths,
+  person: null,
+  readyToSubmit: function() {
     return !this.get('processingPdf') &&
-           !Ember.isBlank(firstName) &&
-           !Ember.isBlank(lastName) &&
-           Ember.isArray(strengthIndices) && 
-           strengthIndices.length === window.orderedStrengths.length;
-  }.property('firstName', 'lastName', 'strengthIndices'),
+           this.get('person.isDataValid');
+  }.property('person.isDataValid', 'processingPdf'),
 
   handleError: function(message) {
     if (!this.get('isValid')) {
@@ -17,13 +13,28 @@ App.PeopleNewController = Ember.Controller.extend({
     this.set('errorMessage', message);
     this.set('processingPdf', false);
   },
+  
+  initPerson: function() {
+    this.set('person', this.get('model') || this.store.createRecord('person'));
+  },
+
+  cleanup: function() {
+    var person = this.get('person');
+    if (!Ember.isNone(person)) {
+      if (person.get('dirtyType') != "updated") {
+        this.store.unloadRecord(person);
+      } else {
+        person.rollback();
+      }
+    } 
+  },
 
   selectedPdfObserver: function() {
-    this.set('processingPdf', true);
-    this.set('errorMessage', null);
     var self = this;
     var selectedPdf = this.get('selectedPdf');
     if (!Ember.isNone(selectedPdf)) {
+      this.set('processingPdf', true);
+      this.set('errorMessage', null);
       var reader = new FileReader();
       reader.onload = function() {
         if (reader.result.byteLength > 80000) {
@@ -101,11 +112,11 @@ App.PeopleNewController = Ember.Controller.extend({
 
             if (i === window.orderedStrengths.length) {
               self.setProperties({
-                firstName: firstName,
-                lastName: lastName,
-                strengthIndices: strengthIndices,
-                orderedStrengthIndices: orderedStrengthIndices
-              })
+                "person.firstName": firstName,
+                "person.lastName": lastName,
+                "person.strengthIndices": strengthIndices,
+                "currentIndices": strengthIndices
+              });
               self.set('processingPdf', false);
             } else {
               self.handleError('Could not find all strengths in the submitted Theme Sequence Report');
@@ -116,22 +127,19 @@ App.PeopleNewController = Ember.Controller.extend({
       }, textLayer);
     }
   },
+  updateManualStrengthIndices: function(indices) {
+    this.set('person.strengthIndices', indices);
+  },
   actions: {
     submit: function() {
       var self = this;
-      var person = this.store.createRecord('person', {
-        firstName: this.get('firstName'),
-        lastName: this.get('lastName'),
-        strengthIndices: this.get('strengthIndices')
-      });
-
+      var person = this.get('person');
       person.save().then(function() {
-        self.store.unloadRecord(person);
         self.transitionTo('people');
       }, function(error) {
         alert("Save didn't work!");
       });
-    }
+    },
   }
 
 });
