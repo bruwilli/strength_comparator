@@ -27,6 +27,7 @@ App.PeopleNewController = Ember.Controller.extend({
         person.rollback();
       }
     } 
+    this.set('currentIndices', undefined);
   },
 
   selectedPdfObserver: function() {
