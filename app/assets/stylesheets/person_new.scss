@@ -1,5 +1,6 @@
 #initial-strengths, #ordered-strengths {
-  border: 1px solid #eee;
+  border: 1px solid #bbb;
+  background-color: #eee;
   width: 100%;
   list-style-type: none;
   margin: 0;
@@ -27,4 +28,13 @@
 
 #submit-person-button {
   margin-bottom: 10px;
+}
+
+.select-pdf-container {
+  height: 43px;
+}
+
+#how-to-get {
+  margin-top: 8px;
+  margin-left: 10px;
 }

@@ -8,8 +8,11 @@
 
 		<div class="panel panel-default">
 		  <div class="panel-body">
-				<div class="select-pdf-button">
-					{{select-pdf-button selectedPdf=selectedPdf disabled=processingPdf}}
+		  	<div class="select-pdf-container">
+					<div class="select-pdf-button pull-left">
+						{{select-pdf-button selectedPdf=selectedPdf disabled=processingPdf}}
+					</div>
+					<a id='how-to-get' class="pull-left" data-toggle="popover" data-content='Get your “Your Theme Sequence Report” here: <a href="https://g.gallup.com/go.g/a" target="_blank">https://g.gallup.com/go.g/a</a>.  After signing in, go to “My Strengths Reports”, then click on “Your Theme Sequence Report (All 34)”'>How do I get it?</a>
 				</div>
 				{{#if errorMessage}}
 				  <div class="alert alert-danger" role="alert">

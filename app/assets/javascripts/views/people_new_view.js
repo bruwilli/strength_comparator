@@ -43,6 +43,23 @@ App.PeopleNewView = Ember.View.extend({
   	this.$( "#initial-strengths" ).sortable({
       connectWith: ".connectedSortable"
     }).disableSelection();
+
+    this.$('[data-toggle="popover"]').popover({
+      html:true
+    }).on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(this).siblings(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide")
+            }
+        }, 100);
+    });
   }, 
 
   arraysIdentical: function(a, b) {
