@@ -1,5 +1,7 @@
 #= require jquery
 #= require jquery-ui/sortable
+#= require jquery-ui/draggable
+#= require ./vendor/jquery.dragtable
 #= require handlebars
 #= require ember
 #= require ember-data
