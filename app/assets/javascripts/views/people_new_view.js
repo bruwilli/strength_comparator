@@ -82,7 +82,7 @@ App.PeopleNewView = Ember.View.extend({
   		var indices = [];
       for (var i = 0; i < length; i++) {
       	var strength = $(items[i]).text();
-        indices.push(window.orderedStrengths.indexOf(strength));
+        indices[window.orderedStrengths.indexOf(strength)] = i;
       }
       controller.updateManualStrengthIndices(indices);
       this.set('lastIndices', indices);

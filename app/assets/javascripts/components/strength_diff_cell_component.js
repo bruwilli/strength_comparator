@@ -14,13 +14,6 @@ App.StrengthDiffCellComponent = Ember.Component.extend({
       return "";
     }
   }.property('person', 'comparedPerson'),
-  // comparedPeopleObserver: function() {
-  // 	var person = this.get('person'), 
-  // 	    comparedPerson = this.get('comparedPerson');
-  // 	if (!Ember.isNone(person) && !Ember.isNone(comparedPerson)) {
-  // 		this.set('strengthDiff', person.comparedToOther(comparedPerson).diffness); 
-  // 	}
-  // }.observes('person', 'comparedPerson').on('init'),
   colorForStrengthDiff: function(diff) {
   	if (!Ember.isNone(diff)) {
 	  	var absDiff = Math.abs(diff);

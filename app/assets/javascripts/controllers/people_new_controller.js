@@ -98,7 +98,6 @@ App.PeopleNewController = Ember.Controller.extend({
             }
 
             var strengthIndices = [];
-            var orderedStrengthIndices = [];
             var i = 0;
             for (; i < strengths.length; i++) {
               var strength = window.orderedStrengths[i];
@@ -107,7 +106,6 @@ App.PeopleNewController = Ember.Controller.extend({
                 break;
               } else {
                 strengthIndices.push(index);
-                orderedStrengthIndices[index] = i;
               }
             }
 
