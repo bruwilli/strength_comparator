@@ -12,6 +12,6 @@ App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 	},
   buildURL: function (type, id, record) {
   	var url = this._super(type, id, record);
-    return this.appendQueryParam(url, 'authenticity_token', window.authenticityToken);
+    return this.appendQueryParam(url, 'authenticity_token', encodeURIComponent(window.authenticityToken));
   }
 })
