@@ -31,7 +31,7 @@
 					  <tr>
 						  <td>{{comparedStrength.strength}}</td>
 						  {{#each strengthDiff in comparedStrength.strengthDiffs}}
-						    {{strength-diff-cell strengthDiff=strengthDiff maxDiff=33}}
+						    {{strength-diff-cell strengthDiff=strengthDiff maxDiff=33 includeArrow=true}}
 						  {{/each}}
 						</tr>
 					{{/each}}
