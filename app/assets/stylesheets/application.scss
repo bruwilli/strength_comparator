@@ -19,7 +19,12 @@
 		width: 100%;
     @include linear-gradient($same-color, $diff-color);
     display: inline-block;
-    color: $diff-font-color;
+    .different-color {
+      color: $diff-font-color;
+    }
+    .same-color {
+      color: $same-font-color;
+    }
 	}
 }
 

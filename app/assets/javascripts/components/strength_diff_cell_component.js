@@ -3,8 +3,13 @@ App.StrengthDiffCellComponent = Ember.Component.extend({
   attributeBindings: ['style'],
   classNames: ['strength-diff-cell'],
   style: function() {
-    return 'background-color: ' + this.colorForStrengthDiff(this.get('strengthDiff'));
-  }.property('strengthDiff', 'maxDiff', 'person', 'comparedPerson'),
+    var bc = this.colorForStrengthDiff(this.get('strengthDiff'));
+    var backgroundStyle = 'background-color: rgb(' + bc.r + ',' + bc.g + ',' + bc.b + ');';
+    var fc = this.invertColor(bc);
+    var fontStyle = 'color: rgb(' + fc.r + ',' + fc.g + ',' + fc.b + ');';
+
+    return backgroundStyle + fontStyle;
+  }.property('strengthDiff'),
   strengthDiff: function() {
     var person = this.get('person'), 
         comparedPerson = this.get('comparedPerson');
@@ -28,11 +33,15 @@ App.StrengthDiffCellComponent = Ember.Component.extend({
 	  	red = Math.round(red);          
 	  	green = Math.round(green);          
 	  	blue = Math.round(blue);   
+      return  {r: red, g: green, b: blue};
 	  	return 'rgb(' + red + ',' + green + ',' + blue + ')';       
   	}
   	return 'rgb(255,255,255)';
+  },
+  invertColor: function(c) {
+    var color = 0xFFFFFF ^((c.r << 16) + (c.g << 8) + c.b);
+    return {r: (color & 0xFF0000) >> 16, g: (color & 0xFF00) >> 8, b: color & 0xFF};
   }
-
 });
 
 App.StrengthDiffCellComponent.Colors = {
@@ -42,4 +51,6 @@ App.StrengthDiffCellComponent.Colors = {
   diffRed: 0,
   diffGreen: 0,
   diffBlue: 255
-}
+};
+
+
