@@ -21,7 +21,7 @@ test:
 development:
   adapter: postgresql
   encoding: unicode
-  database: blog_development
+  database: strength_diff
   pool: 5
   timeout: 5000
 
